@@ -1,0 +1,56 @@
+text,category
+chicken biryani,Food
+veg meals hotel,Food
+dominos pizza order,Food
+burger king bill,Food
+coffee shop latte,Food
+swiggy food delivery,Food
+zomato order,Food
+grocery store vegetables,Food
+supermarket food items,Food
+snacks and juice,Food
+fresh fruits,Food
+
+petrol pump bill,Transport
+fuel station petrol,Transport
+diesel fill receipt,Transport
+uber ride payment,Transport
+ola cab trip,Transport
+bus ticket fare,Transport
+train ticket booking,Transport
+metro recharge,Transport
+vehicle service charge,Transport
+bike repair cost,Transport
+
+tshirt purchase,Shopping
+clothing store bill,Shopping
+amazon shopping order,Shopping
+flipkart product purchase,Shopping
+shoes bought,Shopping
+fashion accessories,Shopping
+mall shopping bill,Shopping
+online shopping payment,Shopping
+dress material purchase,Shopping
+electronics purchase,Shopping
+
+electricity bill payment,Utilities
+current bill paid,Utilities
+water bill receipt,Utilities
+gas cylinder booking,Utilities
+broadband recharge,Utilities
+wifi bill,Utilities
+mobile recharge payment,Utilities
+postpaid bill paid,Utilities
+internet service charge,Utilities
+utility bill payment,Utilities
+
+movie ticket booking,Entertainment
+cinema hall bill,Entertainment
+netflix subscription,Entertainment
+spotify premium payment,Entertainment
+game recharge,Entertainment
+concert ticket,Entertainment
+event entry pass,Entertainment
+ott platform subscription,Entertainment
+gaming purchase,Entertainment
+theatre snacks bill,Entertainment
