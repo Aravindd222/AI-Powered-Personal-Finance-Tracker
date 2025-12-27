@@ -2,6 +2,7 @@ import re
 import joblib
 
 import numpy as np
+from datetime import datetime
 
 tfidf = joblib.load("tfidf.pkl")
 category_model = joblib.load("category_model.pkl")
@@ -208,3 +209,47 @@ def detect_category_ml(ocr_blocks):
         "subcategory": subcategory,
         "keywords": keywords
     }
+
+
+DATE_PATTERNS = [
+    r"\b\d{2}/\d{2}/\d{2}\b",       # 20/12/25
+    r"\b\d{2}/\d{2}/\d{4}\b",       # 20/12/2025
+    r"\b\d{2}-\d{2}-\d{4}\b",       # 20-12-2025
+    r"\b\d{2}\.\d{2}\.\d{4}\b",     # 20.12.2025
+    r"\b\d{1,2}-[A-Za-z]{3}-\d{4}\b",     # 12-Apr-2025
+    r"\b\d{1,2}-[A-Za-z]{3}-\d{2}\b",     # 12-Apr-25
+    r"\b\d{1,2}\s+[A-Za-z]{3,9}\s+\d{4}\b",  # 12 March 2020
+    r"\b[A-Za-z]{3,9}\s+\d{1,2},\s*\d{4}\b"  # April 12, 2025
+]
+
+def extract_date(ocr_blocks):
+    text = " ".join(b["text"] for b in ocr_blocks)
+
+    for pattern in DATE_PATTERNS:
+        match = re.search(pattern, text, re.IGNORECASE)
+        if not match:
+            continue
+
+        raw_date = match.group()
+
+        formats = [
+            "%d/%m/%y",
+            "%d/%m/%Y",
+            "%d-%m-%Y",
+            "%d.%m.%Y",
+
+            "%d-%b-%Y",   # 12-Apr-2025
+            "%d-%b-%y",   # 12-Apr-25
+            "%d %B %Y",   # 12 March 2020
+            "%B %d, %Y",  # April 12, 2025
+            "%b %d, %Y",  # Apr 12, 2025
+        ]
+
+        for fmt in formats:
+            try:
+                parsed = datetime.strptime(raw_date, fmt)
+                return parsed.date().isoformat()  # YYYY-MM-DD
+            except ValueError:
+                pass
+
+    return None
