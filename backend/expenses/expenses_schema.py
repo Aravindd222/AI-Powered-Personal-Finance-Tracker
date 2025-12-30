@@ -4,6 +4,7 @@ from datetime import date
 from typing import Optional
 from uuid import UUID
 
+# Schema for creating a manual expense
 
 class ManualExpenseCreate(BaseModel):
     amount: float

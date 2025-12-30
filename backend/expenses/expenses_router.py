@@ -12,6 +12,7 @@ from parser_ml import extract_amount_strict, detect_category_ml,extract_date
 
 router = APIRouter(prefix="/expenses", tags=["Expenses"])
 
+#expenses endpoints 
 
 @router.post("/manual", response_model=ExpenseResponse)
 def add_manual_expense(
