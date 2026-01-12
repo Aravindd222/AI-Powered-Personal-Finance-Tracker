@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API = "https://127.0.0.1:8000";
+const API = "http://localhost:8000";
 
 const authHeader = () => ({
     headers:{
@@ -9,8 +9,8 @@ const authHeader = () => ({
 });
 
 export const addManualExpense = (data) => {
-    axios.post(`${API}/expenses/manual`,data,authHeader());
-}
+    return axios.post(`${API}/expenses/manual`,data,authHeader());
+};
 
 export const uploadBill = (file) => {
     const formData = new FormData();
@@ -21,5 +21,5 @@ export const uploadBill = (file) => {
 };
 
 export const getMonthlySummary = () => {
-    axios.get(`${API}/expenses/monthly-summary`,authHeader());
-}
+    return axios.get(`${API}/expenses/monthly-summary`,authHeader());
+};

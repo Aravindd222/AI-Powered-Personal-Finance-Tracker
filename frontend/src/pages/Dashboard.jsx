@@ -18,7 +18,7 @@ export default function Dashboard(){
                 <div>
                     <h2>Monthly Spending</h2>
                     <PieChart width={400} height={400}>
-                        <Pie data={data} dataKey = "amount" nameKey="category" outerRadius={150}>
+                        <Pie data={data} dataKey = "total" nameKey="category" outerRadius={150}>
                             {data.map((_,index) => (
                                 <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
                             ))}

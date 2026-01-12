@@ -10,14 +10,12 @@ export default function Login(){
     const handleSubmit = async (e) => {
         e.preventDefault();
         try{
-            const res = await login({email,password});
-            localStorage.setItem("token",res.data.access_token);
+            const res = await login({email, password});
+            localStorage.setItem("token", res.data.access_token);
             navigate("/dashboard");
-        }catch{
+        }catch(err){
             alert("Invalid credentials");
         }
-
-
     };
 
     return(
