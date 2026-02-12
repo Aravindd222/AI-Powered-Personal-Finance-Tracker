@@ -6,8 +6,13 @@ export default function Dashboard(){
     const [data,setData] = useState([]);
     
     useEffect(() => {
-        getMonthlySummary().then((res) => setData(res.data));
-    }, []);
+    getMonthlySummary()
+      .then((res) => {
+        // backend returns { data: [...] }
+        setData(res.data.data || []);
+      })
+      .catch(() => setData([]));
+        }, []);
 
     const COLORS = ['blue', 'orange', 'green', 'red'];
 

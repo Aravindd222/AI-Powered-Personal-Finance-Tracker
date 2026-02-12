@@ -4,7 +4,8 @@ import { uploadBill} from "../api/expenses";
 export default function OcrUpload() {
     const [file,setFile] = useState(null);
     const[result,setResult] = useState("");
-
+    const [error, setError] = useState("null");
+    const [loading, setLoading] = useState(false);
     const handleUpload = async (e) => {
         const res = await uploadBill(file);
         setResult(res.data);

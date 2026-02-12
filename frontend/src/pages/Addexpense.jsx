@@ -18,9 +18,9 @@ export default function AddExpense() {
             <form onSubmit={handleSubmit}
                 className="">
                 <h2>Add Expense</h2>
-                <input type="number" placeholder="Amount" onChange={(e)=> setAmount(e.target.value)} required />
-                <select className="" onChange={(e) => setCategory(e.target.value)}>
-                    <option value="" disabled selected>Select Category</option>
+                <input value={amount} type="number" placeholder="Amount" onChange={(e)=> setAmount(e.target.value)} required />
+                <select value={category} className="" onChange={(e) => setCategory(e.target.value)}>
+                    <option value="">Select Category</option>
                     <option value="Food">Food</option>
                     <option value="Transport">Transport</option>
                     <option value="Utilities">Utilities</option>
@@ -28,7 +28,7 @@ export default function AddExpense() {
                     <option value="Shopping">Shopping</option>
                 </select>
                 <input type="date" className="" onChange={(e) => setDate(e.target.value)} required />
-                <button className="">Save</button>
+                <button className="" type="submit">Save</button>
             </form>
         </div>
     );
