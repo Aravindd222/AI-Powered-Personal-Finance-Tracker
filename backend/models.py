@@ -1,5 +1,5 @@
 import uuid
-from sqlalchemy import Column, String, Date, Float, Text, TIMESTAMP, ForeignKey , Numeric
+from sqlalchemy import Column, String, Date, Float, Text, TIMESTAMP, ForeignKey , Numeric, DateTime
 from sqlalchemy.dialects.postgresql import UUID
 from sqlalchemy.sql import func
 from database import Base
@@ -8,9 +8,9 @@ class User(Base):
     __tablename__ = "users"
 
     id = Column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
-    email = Column(String, unique=True, nullable=False)
-    hashed_password = Column(String, nullable=False)
-    created_at = Column(TIMESTAMP, server_default=func.now())
+    email = Column(String, unique=True, index=True)
+    password_hash = Column(String, nullable=False)
+    created_at = Column(DateTime(timezone=True), server_default=func.now())
 
 
 class Expense(Base):
@@ -21,6 +21,7 @@ class Expense(Base):
 
     amount = Column(Numeric(10, 2), nullable=False)
     category = Column(String(50), nullable=False)
+    subcategory = Column(String, nullable=True)
     date = Column(Date, nullable=False)
 
     source = Column(String(10), nullable=False)  # manual | ocr

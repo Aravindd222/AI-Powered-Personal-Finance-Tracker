@@ -17,12 +17,22 @@
 from fastapi import FastAPI
 from database import Base, engine
 
-from auth.auth_router import router as auth_router
-from expenses.expenses_router import router as expenses_router
+from auth import auth_router
+from expenses import expenses_router
+from fastapi.middleware.cors import CORSMiddleware
 
-Base.metadata.create_all(bind=engine)
 
 app = FastAPI(title="AI Finance Tracker")
 
-app.include_router(auth_router)
-app.include_router(expenses_router)
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["http://localhost:5173"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
+Base.metadata.create_all(bind=engine)
+
+app.include_router(auth_router.router)
+app.include_router(expenses_router.router)

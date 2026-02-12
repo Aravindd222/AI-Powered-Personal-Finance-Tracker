@@ -1,62 +1,348 @@
 text,category
-chicken biryani,Food
-veg meals hotel,Food
-dominos pizza order,Food
-burger king ,Food
-coffee shop latte,Food
-swiggy food delivery,Food
-zomato order,Food
-grocery store vegetables,Food
-supermarket food items,Food
-snacks and juice,Food
-tea coffee stall,Food
-fresh fruits,Food
-non-veg restaurants,Food
-taste,Food
-dosa idly,Food
 
-petrol pump ,Transport
-fuel station petrol,Transport
+restaurant invoice total 650 cgst sgst,Food
+hotel dinner bill amount 780,Food
+veg thali restaurant receipt,Food
+non veg meals hotel invoice,Food
+cafe latte cappuccino payment upi,Food
+coffee shop bill no 221,Food
+tea stall receipt cash,Food
+breakfast dosa idly hotel,Food
+lunch buffet restaurant bill,Food
+food court mall dining invoice,Food
+kfc chicken bucket bill,Food
+dominos pizza takeaway receipt,Food
+burger king invoice total,Food
+swiggy order payment,Food
+zomato delivery invoice,Food
+biryani parcel hotel bill,Food
+juice shop invoice no 98,Food
+bakery cake purchase bill,Food
+waffle shop receipt,Food
+dessert cafe invoice,Food
+fast food restaurant payment,Food
+annapoorna hotel bill,Food
+family dinner restaurant invoice,Food
+south indian meals receipt,Food
+north indian restaurant bill,Food
+multi cuisine dining invoice,Food
+barbeque nation bill total,Food
+buffet dinner receipt,Food
+pizza hut dine in bill,Food
+ice cream parlour invoice,Food
+sandwich shop bill,Food
+fried rice noodles receipt,Food
+cafe bill with gst,Food
+midnight food delivery invoice,Food
+takeaway order bill number,Food
+restaurant payment by card,Food
+hotel bill with tax breakup,Food
+food delivery online payment,Food
+canteen lunch receipt,Food
+office cafeteria invoice,Food
+snacks cafe purchase bill,Food
+street food vendor receipt,Food
+chinese restaurant invoice,Food
+italian restaurant bill,Food
+birthday dinner bill,Food
+couple dinner invoice,Food
+restaurant service charge bill,Food
+food bill subtotal tax total,Food
+restaurant gst invoice,Food
+dining receipt card payment,Food
+
+supermarket grocery bill total 1450,Groceries
+hypermarket invoice cgst sgst,Groceries
+kirana store receipt,Groceries
+monthly grocery shopping invoice,Groceries
+provision store bill no 22,Groceries
+nutella jar supermarket bill,Groceries
+atta rice dal grocery purchase,Groceries
+vegetables fruits supermarket receipt,Groceries
+milk packet purchase invoice,Groceries
+onion potato vegetable bill,Groceries
+dry fruits store invoice,Groceries
+household grocery purchase,Groceries
+fmcg items supermarket bill,Groceries
+soap shampoo grocery invoice,Groceries
+toothpaste detergent bill,Groceries
+rice bag 10kg supermarket receipt,Groceries
+wheat flour grocery purchase,Groceries
+oil sugar purchase invoice,Groceries
+grace supermarket wallet bill,Groceries
+daily needs grocery bill,Groceries
+provision items receipt,Groceries
+departmental store invoice,Groceries
+personal care items bill,Groceries
+household supplies purchase,Groceries
+supermarket tax invoice,Groceries
+retail grocery receipt,Groceries
+mart shopping bill,Groceries
+bulk grocery purchase invoice,Groceries
+grocery subtotal tax total,Groceries
+kirana monthly bill,Groceries
+groceries with gst invoice,Groceries
+supermarket counter receipt,Groceries
+provision market invoice,Groceries
+household consumables bill,Groceries
+fmcg supermarket receipt,Groceries
+grocery basket purchase,Groceries
+vegetable market invoice,Groceries
+supermarket billing receipt,Groceries
+daily essentials bill,Groceries
+general store invoice,Groceries
+pantry items purchase bill,Groceries
+ration store receipt,Groceries
+supermarket wallet payment invoice,Groceries
+grocery store card payment,Groceries
+retail mart invoice total,Groceries
+department store grocery bill,Groceries
+monthly household shopping bill,Groceries
+grocery invoice number 458,Groceries
+mart purchase with gst,Groceries
+supermarket payment upi,Groceries
+
+clothing store invoice total 2400,Shopping
+mall shopping receipt,Shopping
+tshirt jeans purchase bill,Shopping
+amazon order invoice id,Shopping
+flipkart product purchase receipt,Shopping
+mobile phone purchase invoice,Shopping
+laptop billing receipt,Shopping
+television purchase invoice,Shopping
+watch store bill,Shopping
+cosmetics shop invoice,Shopping
+perfume purchase receipt,Shopping
+electronic appliance invoice,Shopping
+retail garments shop bill,Shopping
+home decor shopping receipt,Shopping
+gift item store invoice,Shopping
+jewellery purchase bill,Shopping
+sports shoes shopping invoice,Shopping
+fashion accessories receipt,Shopping
+online order payment invoice,Shopping
+headphones electronic store bill,Shopping
+tablet purchase invoice,Shopping
+camera store receipt,Shopping
+gaming console purchase bill,Shopping
+smart watch invoice,Shopping
+department store shopping bill,Shopping
+retail shopping gst invoice,Shopping
+appliance showroom receipt,Shopping
+furniture purchase invoice,Shopping
+sofa table shopping bill,Shopping
+electronics mart invoice,Shopping
+lifestyle store receipt,Shopping
+retail mall billing invoice,Shopping
+clothing boutique receipt,Shopping
+fashion mall invoice total,Shopping
+shopping center purchase bill,Shopping
+online marketplace invoice,Shopping
+garments showroom receipt,Shopping
+retail outlet invoice,Shopping
+store purchase subtotal tax,Shopping
+shopping payment by card,Shopping
+home appliance store invoice,Shopping
+book store purchase receipt,Shopping
+stationery shopping invoice,Shopping
+toy store bill,Shopping
+gift shop receipt,Shopping
+retail invoice with gst,Shopping
+mall purchase invoice,Shopping
+electronics billing receipt,Shopping
+fashion store invoice,Shopping
+shopping receipt total amount,Shopping
+
+petrol pump invoice amount 2000,Transport
+fuel station petrol bill,Transport
 diesel fill receipt,Transport
-uber ride,Transport
-ola cab trip,Transport
-bus ticket fare,Transport
-train ticket booking,Transport
-metro recharge,Transport
-vehicle service charge,Transport
-bike repair cost,Transport
+radha rama petroleum invoice,Transport
+hp petrol bill amount,Transport
+uber ride receipt,Transport
+ola cab trip invoice,Transport
+bus ticket fare receipt,Transport
+train ticket booking irctc,Transport
+metro recharge card,Transport
+auto rickshaw fare bill,Transport
+parking charge invoice,Transport
+toll plaza receipt,Transport
+car wash service bill,Transport
+vehicle service center invoice,Transport
+bike repair workshop bill,Transport
+flight ticket booking receipt,Transport
+airport taxi fare invoice,Transport
+travel agency booking invoice,Transport
+fuel payment card receipt,Transport
+cab online payment invoice,Transport
+railway ticket invoice,Transport
+public transport pass recharge,Transport
+travel ticket subtotal tax,Transport
+road trip fuel bill,Transport
+gas station gst invoice,Transport
+vehicle maintenance invoice,Transport
+tyre replacement service bill,Transport
+engine repair workshop receipt,Transport
+car service invoice total,Transport
+petrol diesel fuel receipt,Transport
+transport booking invoice,Transport
+bike petrol bill,Transport
+auto stand fare receipt,Transport
+cab ride gst invoice,Transport
+bus pass recharge invoice,Transport
+metro travel receipt,Transport
+highway toll invoice,Transport
+fuel pump card payment bill,Transport
+parking lot charge receipt,Transport
+travel fare invoice,Transport
+car garage repair bill,Transport
+petrol pump receipt number,Transport
+ride sharing payment invoice,Transport
+diesel station invoice,Transport
+airport travel ticket bill,Transport
+cab booking invoice total,Transport
+vehicle wash receipt,Transport
+two wheeler petrol invoice,Transport
+fuel bill subtotal tax,Transport
 
-tshirt purchase,Shopping
-clothing store,Shopping
-amazon shopping order,Shopping
-flipkart product purchase,Shopping
-shoes bought,Shopping
-fashion accessories,Shopping
-mall shopping,Shopping
-online shopping,Shopping
-dress material purchase,Shopping
-electronics purchase,Shopping
+electricity bill payment invoice,Utilities
+current bill tneb receipt,Utilities
+power consumption kwh bill,Utilities
+electricity board invoice number,Utilities
+eb reading date amount payable,Utilities
+water bill metro receipt,Utilities
+gas cylinder booking invoice,Utilities
+lpg gas agency receipt,Utilities
+sathy gas refill invoice,Utilities
+broadband recharge act fibernet,Utilities
+wifi monthly subscription invoice,Utilities
+mobile recharge prepaid receipt,Utilities
+postpaid bill airtel invoice,Utilities
+internet service charge receipt,Utilities
+cable tv subscription bill,Utilities
+dth recharge invoice,Utilities
+landline bill payment receipt,Utilities
+water tax bill invoice,Utilities
+gas pipeline bill receipt,Utilities
+utility bill subtotal tax total,Utilities
+electricity payment upi receipt,Utilities
+power board gst invoice,Utilities
+internet broadband invoice,Utilities
+mobile bill invoice number,Utilities
+water supply bill receipt,Utilities
+electricity charge breakdown invoice,Utilities
+eb service number invoice,Utilities
+gas subsidy bill receipt,Utilities
+telecom postpaid invoice,Utilities
+utility online payment receipt,Utilities
+power consumption charge invoice,Utilities
+electricity board receipt,Utilities
+water utility invoice total,Utilities
+gas agency tax invoice,Utilities
+wifi recharge receipt,Utilities
+mobile bill subtotal tax,Utilities
+cable network invoice,Utilities
+utility payment card receipt,Utilities
+gas cylinder delivery invoice,Utilities
+electricity arrears bill,Utilities
+internet monthly bill,Utilities
+telecom recharge invoice,Utilities
+water usage invoice,Utilities
+gas connection receipt,Utilities
+power bill card payment,Utilities
+electricity due amount invoice,Utilities
+utility gst invoice total,Utilities
+mobile recharge payment invoice,Utilities
+broadband monthly bill receipt,Utilities
+water department invoice,Utilities
 
-electricity,Utilities
-current bill,Utilities
-water bill receipt,Utilities
-gas cylinder booking,Utilities
-broadband recharge,Utilities
-wifi,Utilities
-mobile recharge,Utilities
-postpaid,Utilities
-internet service charge,Utilities
-utility,Utilities
+movie ticket booking pvr invoice,Entertainment
+cinema hall receipt,Entertainment
+netflix subscription payment invoice,Entertainment
+spotify premium invoice,Entertainment
+ott platform subscription bill,Entertainment
+gaming purchase steam invoice,Entertainment
+playstation store bill,Entertainment
+concert ticket receipt,Entertainment
+event entry pass invoice,Entertainment
+theatre snacks purchase receipt,Entertainment
+sports turf cricket booking,Entertainment
+football ground booking invoice,Entertainment
+amusement park ticket receipt,Entertainment
+bowling alley bill,Entertainment
+theme park entry ticket invoice,Entertainment
+arcade game payment receipt,Entertainment
+music festival pass invoice,Entertainment
+comedy show ticket bill,Entertainment
+club entry cover charge receipt,Entertainment
+movie popcorn combo bill,Entertainment
+cinema ticket gst invoice,Entertainment
+entertainment event booking receipt,Entertainment
+movie subscription invoice,Entertainment
+gaming recharge invoice,Entertainment
+streaming service bill,Entertainment
+sports match ticket receipt,Entertainment
+live concert invoice,Entertainment
+theatre booking invoice,Entertainment
+movie hall payment receipt,Entertainment
+fun zone ticket bill,Entertainment
+amusement entry invoice,Entertainment
+ott recharge invoice,Entertainment
+music app subscription receipt,Entertainment
+cinema card payment invoice,Entertainment
+movie booking online receipt,Entertainment
+game center invoice,Entertainment
+event pass payment receipt,Entertainment
+film ticket invoice,Entertainment
+entertainment gst bill,Entertainment
+movie theatre subtotal tax invoice,Entertainment
+concert booking online receipt,Entertainment
+festival entry invoice,Entertainment
+stadium ticket purchase bill,Entertainment
+gaming store invoice,Entertainment
+subscription entertainment bill,Entertainment
+cinema booking invoice total,Entertainment
+event ticket subtotal tax receipt,Entertainment
+movie combo snacks invoice,Entertainment
+entertainment service charge bill,Entertainment
+club membership invoice,Entertainment
 
-movie ticket booking,Entertainment
-cinema hall bill,Entertainment
-netflix prime hotstar subscription,Entertainment
-spotify,Entertainment
-game,Entertainment
-concert ticket,Entertainment
-event entry pass,Entertainment
-ott platform subscription,Entertainment
-gaming purchase,Entertainment
-theatre snacks ,Entertainment
-sports football snookers,Entertainment
-turf cricket,Entertainment
+salon service invoice total,Services
+vintage royal grooming bill,Services
+haircut service charge receipt,Services
+head massage service invoice,Services
+beauty parlour invoice total,Services
+spa therapy session bill,Services
+barber shop receipt,Services
+mens grooming service invoice,Services
+facial treatment bill,Services
+hair spa service invoice,Services
+salon appointment receipt,Services
+makeup service invoice,Services
+massage therapy receipt,Services
+home cleaning service invoice,Services
+plumbing repair service bill,Services
+electrician service charge invoice,Services
+ac repair service receipt,Services
+carpenter service invoice,Services
+washing machine repair bill,Services
+appliance repair service invoice,Services
+grooming combo offer receipt,Services
+salon gst invoice,Services
+service subtotal tax invoice,Services
+repair technician visit bill,Services
+home maintenance invoice,Services
+laundry service receipt,Services
+dry cleaning invoice,Services
+beauty service payment receipt,Services
+spa invoice with tax,Services
+professional service charge bill,Services
+cleaning service invoice total,Services
+salon membership invoice,Services
+repair service card payment receipt,Services
+technician service invoice number,Services
+hair styling invoice,Services
+salon billing receipt,Services
+personal grooming invoice,Services
+beauty spa bill,Services
+home service repair invoice,Services
+maintenance service receipt,Services

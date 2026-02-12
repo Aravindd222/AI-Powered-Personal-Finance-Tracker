@@ -14,6 +14,7 @@ PRIMARY_KEYWORDS = [
     "net payable",
     "total payable",
     "amount payable",
+    "total"
 
     # final totals
     "grand total",
@@ -29,6 +30,7 @@ PRIMARY_KEYWORDS = [
     "amount due",
     "balance due",
     "outstanding balance",
+    "total due",
 
     # explicit totals
     "bill total",
@@ -88,6 +90,18 @@ SECONDARY_KEYWORDS = [
 ]
 
 
+def normalize_money(token: str):
+    token = token.strip()
+
+    # convert comma decimal to dot decimal
+    if re.fullmatch(r"\d+,\d{2}", token):
+        token = token.replace(",", ".")
+
+    # remove thousand separators like 1,000
+    if re.fullmatch(r"\d{1,3}(,\d{3})+(\.\d{1,2})?", token):
+        token = token.replace(",", "")
+
+    return token
 
 def _is_valid_money(token: str) -> bool:
     """
@@ -96,7 +110,7 @@ def _is_valid_money(token: str) -> bool:
     - optional decimal
     - realistic range
     """
-    token = token.replace(",", "").strip()
+    token = normalize_money(token)
 
     if not re.fullmatch(r"\d+(\.\d{1,2})?", token):
         return False
@@ -108,55 +122,96 @@ def _is_valid_money(token: str) -> bool:
         return False
 
     return True
-
 def extract_amount_strict(ocr_blocks):
-    primary_candidates = []
-    secondary_candidates = []
+    """
+    Extracts final payable amount from OCR blocks.
+    Strategy:
+    1. First look for strong priority keywords (Amount Paid, Net Payable, etc.)
+    2. If not found, detect summary section and take the largest valid amount there
+    3. Ignore line-item totals in middle columns
+    """
 
-    n = len(ocr_blocks)
+    PRIORITY_KEYWORDS = [
+        "amount paid",
+        "net payable",
+        "grand total",
+        "final total",
+        "amount due",
+        "balance due",
+        "total due"
+    ]
 
+    SUMMARY_START_KEYWORDS = [
+        "total qty",
+        "payment mode",
+        "discount",
+        "tax",
+        "advance"
+    ]
+
+    def extract_money_from_block(block):
+        values = []
+        tokens = block["text"].split()
+
+        for t in tokens:
+            normalized = normalize_money(t)
+            if _is_valid_money(normalized):
+                values.append(float(normalized))
+
+        return values
+
+    # --------------------------------------------------
+    # STEP 1 — PRIORITY KEYWORDS (Most Reliable)
+    # --------------------------------------------------
     for i, block in enumerate(ocr_blocks):
         text = block["text"].lower()
-        tokens = block["text"].replace(",", "").split()
 
-        # ---------- PRIMARY KEYWORDS ----------
-        if any(k in text for k in PRIMARY_KEYWORDS):
+        if any(k in text for k in PRIORITY_KEYWORDS):
 
-            # SAME LINE
-            for t in tokens:
-                if _is_valid_money(t):
-                    primary_candidates.append(float(t))
+            # Check same line
+            values = extract_money_from_block(block)
+            if values:
+                return {"amount": max(values)}
 
-            # NEXT LINE (CRITICAL FIX)
-            if i + 1 < n:
-                next_tokens = ocr_blocks[i + 1]["text"].replace(",", "").split()
-                for t in next_tokens:
-                    if _is_valid_money(t):
-                        primary_candidates.append(float(t))
+            # Check next line
+            if i + 1 < len(ocr_blocks):
+                next_values = extract_money_from_block(ocr_blocks[i + 1])
+                if next_values:
+                    return {"amount": max(next_values)}
 
-        # ---------- SECONDARY KEYWORDS ----------
-        elif any(k in text for k in SECONDARY_KEYWORDS):
+    # --------------------------------------------------
+    # STEP 2 — SUMMARY SECTION DETECTION
+    # --------------------------------------------------
+    summary_mode = False
+    summary_values = []
 
-            # SAME LINE
-            for t in tokens:
-                if _is_valid_money(t):
-                    secondary_candidates.append(float(t))
+    for block in ocr_blocks:
+        text = block["text"].lower()
 
-            # NEXT LINE
-            if i + 1 < n:
-                next_tokens = ocr_blocks[i + 1]["text"].replace(",", "").split()
-                for t in next_tokens:
-                    if _is_valid_money(t):
-                        secondary_candidates.append(float(t))
+        # Detect start of summary zone
+        if any(k in text for k in SUMMARY_START_KEYWORDS):
+            summary_mode = True
 
-    # ---------- FINAL DECISION ----------
-    if primary_candidates:
-        return {"amount": max(primary_candidates)}
+        if summary_mode:
+            values = extract_money_from_block(block)
+            summary_values.extend(values)
 
-    if secondary_candidates:
-        return {"amount": max(secondary_candidates)}
+    if summary_values:
+        return {"amount": max(summary_values)}
+
+    # --------------------------------------------------
+    # STEP 3 — SAFE FALLBACK (If nothing detected)
+    # --------------------------------------------------
+    all_values = []
+    for block in ocr_blocks:
+        values = extract_money_from_block(block)
+        all_values.extend(values)
+
+    if all_values:
+        return {"amount": max(all_values)}
 
     return {"amount": None}
+
 
 
 
@@ -191,17 +246,56 @@ def get_top_contributing_words(text, top_n=5):
 
     return keywords
 
+def clean_text(text):
+    text = text.lower()
+    text = re.sub(r'\d+', '', text)  # remove numbers
+    text = re.sub(r'[^\w\s]', '', text)  # remove symbols
+    return text
+
+def rule_based_category(text):
+    text = text.lower()
+
+    # Merchant-based rules
+    if any(word in text for word in ["zomato", "swiggy", "restaurant", "hotel", "cafe", "pizza", "burger"]):
+        return {"category": "Food", "subcategory": "Dining"}
+
+    if any(word in text for word in ["supermarket", "mart", "grocery", "store", "hypermarket"]):
+        return {"category": "Groceries", "subcategory": "Supermarket"}
+
+    if any(word in text for word in ["uber", "ola", "petrol", "diesel", "bus", "train", "metro"]):
+        return {"category": "Transport", "subcategory": "Travel"}
+
+    if any(word in text for word in ["electricity", "water bill", "gas", "wifi", "broadband", "recharge"]):
+        return {"category": "Utilities", "subcategory": "Bills"}
+
+    if any(word in text for word in ["amazon", "flipkart", "mall", "clothing", "electronics"]):
+        return {"category": "Shopping", "subcategory": "Retail"}
+
+    if any(word in text for word in ["netflix", "spotify", "movie", "cinema", "concert"]):
+        return {"category": "Entertainment", "subcategory": "Subscription"}
+    
+    if any(word in text for word in ["salon", "grooming", "massage", "barber", "spa"]):
+        return {"category": "Services", "subcategory": "Salon"}
+
+    return None
 
 def detect_category_ml(ocr_blocks):
     text = " ".join(b["text"] for b in ocr_blocks).lower()
+    cleaned = clean_text(text)
 
-    X = tfidf.transform([text])
+    #step 1 - try rule based
+    rule_result = rule_based_category(cleaned)
+    if rule_result:
+        return rule_result
+    
+    #step 2 - ML model
+    X = tfidf.transform([cleaned])
     category = category_model.predict(X)[0]
 
-        # ML-INFLUENTIAL WORDS
+    # ML-INFLUENTIAL WORDS
     keywords = get_top_contributing_words(text)
 
-    # SUBCATEGORY = strongest keyword
+    # SUBCATEGORY = strongest keyword just for demonstration
     subcategory = keywords[0] if keywords else "unknown"
 
     return {
@@ -225,31 +319,28 @@ DATE_PATTERNS = [
 def extract_date(ocr_blocks):
     text = " ".join(b["text"] for b in ocr_blocks)
 
-    for pattern in DATE_PATTERNS:
-        match = re.search(pattern, text, re.IGNORECASE)
-        if not match:
-            continue
+    # Clean OCR noise
+    text = text.replace("O", "0")
+    text = text.replace("o", "0")
 
-        raw_date = match.group()
+    pattern = r"\b\d{1,2}[./-]\d{1,2}[./-]\d{2,4}\b"
+    match = re.search(pattern, text)
 
-        formats = [
-            "%d/%m/%y",
-            "%d/%m/%Y",
-            "%d-%m-%Y",
-            "%d.%m.%Y",
+    if not match:
+        return None
 
-            "%d-%b-%Y",   # 12-Apr-2025
-            "%d-%b-%y",   # 12-Apr-25
-            "%d %B %Y",   # 12 March 2020
-            "%B %d, %Y",  # April 12, 2025
-            "%b %d, %Y",  # Apr 12, 2025
-        ]
+    raw_date = match.group()
 
-        for fmt in formats:
-            try:
-                parsed = datetime.strptime(raw_date, fmt)
-                return parsed.date().isoformat()  # YYYY-MM-DD
-            except ValueError:
-                pass
+    # Normalize all separators to /
+    normalized = re.sub(r"[.-]", "/", raw_date)
 
-    return None
+    try:
+        parsed = datetime.strptime(normalized, "%d/%m/%Y")
+        return parsed.date().isoformat()
+    except ValueError:
+        try:
+            parsed = datetime.strptime(normalized, "%d/%m/%y")
+            return parsed.date().isoformat()
+        except ValueError:
+            return None
+

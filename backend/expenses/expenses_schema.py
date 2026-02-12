@@ -15,7 +15,7 @@ class ExpenseResponse(BaseModel):
     id: UUID
     amount: float
     category: str
-    subcategory: Optional[str]
+    subcategory: Optional[str] = None
     date: date
     source: str
 
